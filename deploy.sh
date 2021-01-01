@@ -1,3 +1,3 @@
 shopt -s dotglob
-cp files/* ~/
+cp -v files/* ~/
 shopt -u dotglob
