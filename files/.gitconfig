@@ -1,0 +1,10 @@
+[user]
+	email = pakumaru.jr8@gmail.com
+	name = pakumaru.jr8
+[core]
+	sshCommand = 'C:\\Program Files\\OpenSSH-Win64\\ssh.exe'
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
