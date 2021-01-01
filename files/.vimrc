@@ -67,6 +67,16 @@ endif
 
 "End dein Scripts-------------------------
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
@@ -122,6 +132,7 @@ set mouse=a           " マウス使えます
 let IM_CtrlMode = 0
 set iminsert=0
 set imsearch=-1
+set cmdheight=2
 set termguicolors
 set termwinsize=12x0
 set splitbelow
