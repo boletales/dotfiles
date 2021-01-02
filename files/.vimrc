@@ -111,7 +111,6 @@ set fileformats=unix,dos,mac
 highlight SpecialKey guibg=NONE guifg=Gray
 set backspace=indent,eol,start " バックスペースでインデントや改行を削除できるようにする
 set nowrap            " ターミナルの右端で文字を折り返さない
-set noswapfile        " tempファイルを作らない。編集中に電源落ちまくるし、とかいう人はコメントアウトで
 set hlsearch          " ハイライトサーチを有効にする。文字列検索は /word とか * ね
 set ignorecase        " 大文字小文字を区別しない(検索時)
 set smartcase         " ただし大文字を含んでいた場合は大文字小文字を区別する(検索時)
@@ -137,6 +136,10 @@ set termguicolors
 set termwinsize=12x0
 set splitbelow
 let NERDTreeWinSize=20
+set directory = "~/.vimswaps/swap"
+set backupdir = "~/.vimswaps/back"
+set undodir   = "~/.vimswaps/undo"
+
 
 colorscheme molokai
 
