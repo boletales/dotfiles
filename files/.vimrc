@@ -97,6 +97,17 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+ 
+"左側に使用されるセパレータ
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+"右側に使用されるセパレータ
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+
 " truecolor
 if has('patch-7.4.1778')
     "set guicolors
@@ -140,10 +151,9 @@ set termguicolors
 set termwinsize=12x0
 set splitbelow
 let NERDTreeWinSize=20
-set directory = "~/.vimswaps/swap"
-set backupdir = "~/.vimswaps/back"
-set undodir   = "~/.vimswaps/undo"
-
+set noswapfile
+set nobackup
+set noundofile
 
 colorscheme molokai
 
