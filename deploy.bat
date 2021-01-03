@@ -1,2 +1,2 @@
 cd /d %~dp0
-copy files\* ~
+copy files\* %homepath%\
