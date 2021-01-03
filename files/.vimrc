@@ -164,6 +164,7 @@ set nobackup
 set noundofile
 
 colorscheme molokai
+AirlineTheme molokai
 
 " [ って打ったら [] って入力されてしかも括弧の中にいる(以下同様)
 imap [ []<left>
