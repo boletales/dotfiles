@@ -162,9 +162,8 @@ let NERDTreeWinSize=20
 set noswapfile
 set nobackup
 set noundofile
-
+let g:airline_theme = 'molokai'
 colorscheme molokai
-AirlineTheme molokai
 
 " [ って打ったら [] って入力されてしかも括弧の中にいる(以下同様)
 imap [ []<left>
