@@ -61,8 +61,6 @@ endif
 filetype plugin indent on
 syntax enable
 
-let g:neocomplete#enable_at_startup = 1
-
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
@@ -179,7 +177,6 @@ set iminsert=0
 set imsearch=-1
 set cmdheight=2
 set termguicolors
-set termwinsize=12x0
 set splitbelow
 let NERDTreeWinSize=20
 set noswapfile
