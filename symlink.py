@@ -7,3 +7,4 @@ for cd, dirs, files in os.walk("./"):
         dest = os.path.expanduser("~")+(cd[1:]+"/"+f).replace("//","/")
         if not os.path.exists(dest):
             os.symlink(os.path.abspath(f), dest)
+            print("created: "+dest)
