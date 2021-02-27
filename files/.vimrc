@@ -1,12 +1,11 @@
+set encoding=UTF-8
+
 scriptencoding utf-8
 
-function! TermOpen()
-    if empty(term_list())
-        execute "terminal"
-    else
-        call win_gotoid(win_findbuf(term_list()[0])[0])
-    endif
-endfunction
+syntax on
+set termencoding=UTF-8 "文字コードをUTF-8にする
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 
 "dein Scripts-----------------------------
 if &compatible
@@ -37,8 +36,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
   call dein#add('flazz/vim-colorschemes')
   call dein#add('Shougo/Denite.nvim')
   call dein#add('tpope/vim-fugitive')
@@ -68,6 +65,16 @@ endif
 
 "End dein Scripts-------------------------
 
+"Open 1 terminal
+function! TermOpen()
+    if empty(term_list())
+        execute "terminal"
+    else
+        call win_gotoid(win_findbuf(term_list()[0])[0])
+    endif
+endfunction
+
+" coc completion settings (from: README of coc)
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -78,7 +85,9 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+" end coc settings
 
+" Please highlight zenkaku space
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
 endfunction
@@ -95,6 +104,7 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 
+" always shows statusline
 set laststatus=2
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
@@ -138,19 +148,10 @@ if 0
 endif
 
 " truecolor
-if has('patch-7.4.1778')
-    "set guicolors
-endif
 if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-
-syntax on
-set encoding=UTF-8 "文字コードをUTF-8にする
-set termencoding=UTF-8 "文字コードをUTF-8にする
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-set fileformats=unix,dos,mac
 highlight SpecialKey guibg=NONE guifg=Gray
 set backspace=indent,eol,start " バックスペースでインデントや改行を削除できるようにする
 set nowrap            " ターミナルの右端で文字を折り返さない
