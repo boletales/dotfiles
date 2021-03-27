@@ -183,6 +183,8 @@ let NERDTreeWinSize=20
 set noswapfile
 set nobackup
 set noundofile
+set visualbell t_vb=
+set noerrorbells
 let g:airline_theme = 'molokai'
 colorscheme molokai
 
