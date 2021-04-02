@@ -185,6 +185,7 @@ set nobackup
 set noundofile
 set visualbell t_vb=
 set noerrorbells
+let g:coc_disable_startup_warning = 1
 let g:airline_theme = 'molokai'
 colorscheme molokai
 
