@@ -41,7 +41,9 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-fugitive')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+  if !filereadable(expand("~/.disablecoc"))
+    call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+  endif
   call dein#add('preservim/nerdtree')
   call dein#add('ujihisa/unite-colorscheme')
 
