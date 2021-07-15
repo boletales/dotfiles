@@ -202,6 +202,12 @@ imap { {}<left>
 imap < <><left>
 inoremap " ""<left>
 inoremap ' ''<left>
+imap < <><left>
+"Ctrl+HJKLで動きたい
+imap <C-h> <left>
+imap <C-j> <up>
+imap <C-k> <down>
+imap <C-l> <right>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-@> :call TermOpen()<CR>
 nmap <C-p> :call TermOpen()<CR>
