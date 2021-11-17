@@ -1,0 +1,14 @@
+[user]
+	email = 30789006+boletales@users.noreply.github.com
+	name = boletales
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+[merge]
+  ff = false
+[pull]
+  ff = only
+[alias]
+  log1f = log --oneline --decorate --graph --branches --tags --remotes
