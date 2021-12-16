@@ -28,28 +28,18 @@ endif
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('$HOME/.cache/dein')
-  call dein#begin('$HOME/.cache/dein')
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
-
-  " Add or remove your plugins here:
-  call dein#add('flazz/vim-colorschemes')
-  call dein#add('Shougo/Denite.nvim')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  if !filereadable(expand("~/.disablecoc"))
-    call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+  let s:rc_dir = expand('~/.vim')
+  if !isdirectory(s:rc_dir)
+    call makedir(s:rc_dir, 'p')
   endif
-  call dein#add('preservim/nerdtree')
-  call dein#add('ujihisa/unite-colorscheme')
+  let s:toml      = s:rc_dir . '/dein.toml'
+  let s:toml_lazy = s:rc_dir . '/dein_lazy.toml'
 
-  " You can specify revision/branch/tag.
-  " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
-  call dein#add('Shougo/deol.nvim')
+  call dein#load_toml(s:toml     , {'lazy': 0})
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
 
   " Required:
   call dein#end()
@@ -193,7 +183,6 @@ set visualbell t_vb=
 set noerrorbells
 let g:coc_disable_startup_warning = 1
 let g:airline_theme = 'molokai'
-colorscheme molokai
 
 " [ って打ったら [] って入力されてしかも括弧の中にいる(以下同様)
 imap [ []<left>
