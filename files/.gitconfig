@@ -12,3 +12,5 @@
   ff = only
 [alias]
   log1f = log --oneline --decorate --graph --branches --tags --remotes
+[core]
+	autocrlf = input

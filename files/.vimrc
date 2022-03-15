@@ -77,6 +77,25 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 " end coc settings
 
 " Please highlight zenkaku space
@@ -156,7 +175,7 @@ set list              " タブ文字の表示 ^I で表示されるよ
 set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 set wildmenu          " コマンドライン補完が強力になる
 set showcmd           " コマンドを画面の最下部に表示する
-set clipboard=unnamed " クリップボードを共有する(設定しないとvimとのコピペが面倒です)
+set clipboard=unnamedplus " クリップボードを共有する(設定しないとvimとのコピペが面倒です)
 set autoindent        " 改行時にインデントを引き継いで改行する
 set shiftwidth=4      " インデントにつかわれる空白の数
 set softtabstop=4     " <Tab>押下時の空白数
