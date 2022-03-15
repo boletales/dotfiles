@@ -194,8 +194,8 @@ inoremap ' ''<left>
 imap < <><left>
 "Ctrl+HJKLで動きたい
 imap <C-h> <left>
-imap <C-j> <up>
-imap <C-k> <down>
+imap <C-j> <down>
+imap <C-k> <up>
 imap <C-l> <right>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <C-@> :call TermOpen()<CR><C-w>k10<C-w>+
