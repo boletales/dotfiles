@@ -1,0 +1,17 @@
+
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev  = 'release'
+if   = '''! filereadable(expand("~/.disablecoc"))'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
