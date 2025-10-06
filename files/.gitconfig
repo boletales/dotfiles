@@ -10,7 +10,11 @@
   ff = false
 [pull]
   ff = only
+[push]
+  autoSetupRemote = true
 [alias]
   log1f = log --oneline --decorate --graph --branches --tags --remotes
+  pullus = !git fetch upstream && git merge --ff upstream/main
 [core]
 	autocrlf = input
+	editor = nvim

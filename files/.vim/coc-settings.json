@@ -10,6 +10,11 @@
             "command": "fortls",
             "filetypes": ["fortran"],
             "rootPatterns": [".fortls", ".git/"]
+        },
+        "purescript": {
+            "command": "purescript-language-server",
+            "filetypes": ["purs"],
+            "rootPatterns": [".git/"]
         }
     }
 }
