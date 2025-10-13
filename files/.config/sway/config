@@ -193,6 +193,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 #
 # Utilities:
@@ -215,6 +216,10 @@ bindsym $mod+r mode "resize"
 bar {
     swaybar_command waybar
 }
+
+default_border pixel 1
+default_floating_border pixel 1
+
 
 exec mkfifo /tmp/wob.fifo
 exec tail -f /tmp/wob.fifo | wob

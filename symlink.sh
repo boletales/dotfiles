@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Settings
-
-
-# 1. make symlinks from ./files/** to $HOME
+# make symlinks from ./files/** to $HOME
 
 ESC=$(printf '\033')
 
@@ -41,7 +38,7 @@ dotfiles_linker() {
   done
 }
 
-read -n1 -r -p "#1 This will symlink all files from ./files to ~/. Are you sure? [y/N] " response
+read -n1 -r -p "Symlink all files from ./files to ~/ ? [y/N] " response
 echo ""
 if [[ $response =~ ^[Yy]$ ]]; then
   shopt -s nullglob
