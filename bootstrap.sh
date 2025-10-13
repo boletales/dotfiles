@@ -2,9 +2,6 @@
 
 # Settings
 
-github_user="boletales"
-
-
 
 # 1. make symlinks from ./files/** to $HOME
 
@@ -58,14 +55,3 @@ else
   echo "Skipping."
 fi
 
-# 2. ask to download ssh keys from https://github.com/[user].keys
-read -n1 -r -p "#2 Do you want to append https://github.com/$github_user.keys to your authorized_keys? [y/N] " response
-echo ""
-if [[ $response =~ ^[Yy]$ ]]; then
-  ssh_dir="$HOME/.ssh"
-  mkdir -p "$ssh_dir"
-  curl -s "https://github.com/$github_user.keys" >> "$ssh_dir/authorized_keys"
-  echo "  + ${ESC}[32mAppended keys of $github_user to $ssh_dir/authorized_keys${ESC}[m"
-else
-  echo "Skipping."
-fi
