@@ -233,4 +233,6 @@ bindsym XF86MonBrightnessDown exec sh -c 'brightnessctl set 2%- && brightnessctl
 
 exec mako
 
+exec fcitx5 -d
+
 include /etc/sway/config.d/*
