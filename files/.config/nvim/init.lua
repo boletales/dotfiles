@@ -22,6 +22,11 @@ vim.opt.wrap = false
 
 vim.opt.signcolumn = 'yes'
 
+-- colorscheme
+vim.cmd[[colorscheme habamax]]
+
 -- shortcuts
 vim.keymap.set('n', '<ESC><ESC>', ':nohlsearch<CR>', { silent = true })
+
+
 
