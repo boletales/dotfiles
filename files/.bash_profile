@@ -17,6 +17,6 @@ if [ -n "$XDG_RUNTIME_DIR" ]; then
 fi
 
 if [[ "$(tty)" == /dev/tty* ]]; then
-setfont ter-v32n
-export LANG=C    
+    setfont ter-v32n
+    export LANG=C    
 fi

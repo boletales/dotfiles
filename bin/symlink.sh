@@ -16,7 +16,7 @@ dotfiles_linker() {
         ln -s "$sourcedir/$name" "$homedir/$name"
         echo "  + ${ESC}[32mLinking $sourcedir/$name to $homedir/$name.${ESC}[m"
       else
-        echo "  * ${ESC}[34m$homedir/$name already exists, skipping.${ESC}[m"
+        echo "  * ${ESC}[90m$homedir/$name already exists, skipping.${ESC}[m"
       fi
     fi
   done
@@ -31,7 +31,7 @@ dotfiles_linker() {
         echo "  + ${ESC}[32mCreated directory $homedir/$name${ESC}[m"
         (dotfiles_linker "$1/$name")
       else
-        echo "  * ${ESC}[34mDirectory $homedir/$name already exists, skipping.${ESC}[m"
+        echo "  * ${ESC}[90mDirectory $homedir/$name already exists, skipping.${ESC}[m"
         (dotfiles_linker "$1/$name")
       fi
     fi
@@ -44,7 +44,7 @@ if [[ $response =~ ^[Yy]$ ]]; then
   shopt -s nullglob
   shopt -s dotglob
 
-  sourceroot="$(cd $(dirname $0) && pwd)/files"
+  sourceroot="$(cd $(dirname $0) && pwd)/../files"
   cd $sourceroot || exit
 
   dotfiles_linker ""

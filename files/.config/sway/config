@@ -256,7 +256,7 @@ output "*" background $bg fill
 
 # screen lock
 
-set $lock_cmd swaylock \
+set $lock_cmd swaylock -f \
     --image $bg \
     --indicator-radius 120 \
     --indicator-thickness 10 \
