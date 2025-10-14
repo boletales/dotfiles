@@ -12,11 +12,15 @@ dotfiles_linker() {
   for item in $sourcedir/*; do
     local name=$(basename "$item")
     if [ -f "$item" ]; then
-      if [ ! -e "$homedir/$name" ]; then
+      if [ -e "$homedir/$name.disable" ]; then
+        echo "  * ${ESC}[35m$homedir/$name is disabled, skipping.${ESC}[m"
+      elif [ -L "$homedir/$name" ]; then
+        echo "  * ${ESC}[90m$homedir/$name is already linked, skipping.${ESC}[m"
+      elif [ -e "$homedir/$name" ]; then
+        echo "  * ${ESC}[35m$homedir/$name already exists, skipping.${ESC}[m"
+      else
         ln -s "$sourcedir/$name" "$homedir/$name"
         echo "  + ${ESC}[32mLinking $sourcedir/$name to $homedir/$name.${ESC}[m"
-      else
-        echo "  * ${ESC}[90m$homedir/$name already exists, skipping.${ESC}[m"
       fi
     fi
   done
