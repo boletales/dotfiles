@@ -7,7 +7,7 @@ ESC=$(printf '\033')
 dotfiles_linker() {
   local sourcedir="$sourceroot$1"
   local homedir="$HOME$1"
-  echo "Processing directory: ./files$1"
+  echo "Processing directory: $1"
   # files first
   for item in $sourcedir/*; do
     local name=$(basename "$item")
