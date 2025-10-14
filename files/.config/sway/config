@@ -217,22 +217,74 @@ bar {
     swaybar_command waybar
 }
 
-default_border pixel 1
-default_floating_border pixel 1
 
+#
+# Custom Settings
+#
 
-exec mkfifo /tmp/wob.fifo
-exec tail -f /tmp/wob.fifo | wob
+# window
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && pamixer --get-volume > /tmp/wob.fifo 
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && pamixer --get-volume > /tmp/wob.fifo
+default_border pixel 0
+default_floating_border pixel 0
+gaps outer 0
+gaps inner 1
+
+# volume control
+
+set $wobpipe /tmp/wob.fifo
+exec mkfifo $wobpipe
+exec tail -f $wobpipe | wob
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && pamixer --get-volume > $wobpipe 
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && pamixer --get-volume > $wobpipe
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
 
-bindsym XF86MonBrightnessUp   exec sh -c 'brightnessctl set 2%+ && brightnessctl -m | cut -d, -f4 | tr -d % > /tmp/wob.fifo '
-bindsym XF86MonBrightnessDown exec sh -c 'brightnessctl set 2%- && brightnessctl -m | cut -d, -f4 | tr -d % > /tmp/wob.fifo' 
+bindsym XF86MonBrightnessUp   exec sh -c 'brightnessctl set 2%+ && brightnessctl -m | cut -d, -f4 | tr -d % > $wobpipe'
+bindsym XF86MonBrightnessDown exec sh -c 'brightnessctl set 2%- && brightnessctl -m | cut -d, -f4 | tr -d % > $wobpipe' 
+
+
+# applications
 
 exec mako
-
 exec fcitx5 -d
+
+# background image
+
+set $bg ~/.config/images/bg1.jpg
+
+output "*" background $bg fill
+
+# screen lock
+
+set $lock_cmd swaylock \
+    --image $bg \
+    --indicator-radius 120 \
+    --indicator-thickness 10 \
+    \
+    --ring-color 45475a \
+    --key-hl-color 89b4fa \
+    --bs-hl-color f38ba8 \
+    --ring-ver-color 45475a \
+    --ring-wrong-color f38ba8 \
+    --ring-clear-color 99d8de \
+    \
+    --inside-color 1e1e2e \
+    --inside-ver-color 1e1e2e  \
+    --inside-wrong-color 1e1e2e \
+    --inside-clear-color 1e1e2e \
+    \
+    --separator-color 00000000 \
+    --font "SauceCodePro Nerd Font" \
+    --font-size 32 \
+    --text-color aaaabe \
+    --text-ver-color aaaabe \
+    --text-wrong-color aaaabe \
+    --text-clear-color aaaabe \
+
+bindsym $mod+o exec $lock_cmd
+
+#
+# Include global settings
+#
 
 include /etc/sway/config.d/*

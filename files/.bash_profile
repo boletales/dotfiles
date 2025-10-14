@@ -15,3 +15,8 @@ if [ -n "$XDG_RUNTIME_DIR" ]; then
         export "$line"
     done < <(systemctl --user show-environment)
 fi
+
+if [[ "$(tty)" == /dev/tty* ]]; then
+setfont ter-v32n
+export LANG=C    
+fi

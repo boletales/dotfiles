@@ -12,7 +12,3 @@ PS1='[\u@\h \W]\$ '
 
 alias vim='nvim'
 
-if [[ "$(tty)" == /dev/tty* ]]; then
-setfont ter-v32n
-export LANG=C    
-fi
